@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <string.h>
+#include "libft.h"
 
 void	ft_atoi(char const *s)
 {

@@ -9,10 +9,10 @@
 /*   Updated: 2018/04/10 17:00:38 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <ctype.h>
+
+#include "libft.h"
 
 int	toupper(int c)
 {
-	c = c - 32;
-	return (c);
+	return (c - 32);
 }

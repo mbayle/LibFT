@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
+#include "libft.h"
 
 int	tolower(int c)
 {
-	c = c + 32;
-	return (c);
+	return (c + 32);
 }
