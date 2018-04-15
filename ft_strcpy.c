@@ -26,25 +26,3 @@ char	*ft_strcpy(char *dest, char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-
-int	main(int argc, char **argv)
-{
-	int i;
-
-	i = 0;
-	if (argc == 3)
-	{
-		char *dest;
-		char *src;
-
-		dest[] = argv[1][];
-		src[] = argv[2][];
-
-		ft_strcpy(&dest, &src);
-		strcpy(&dest, &src);
-		printf("Fonction originale resultat : %s\n", dest);
-		printf("Fonction ft_strcpy resultat : %s\n", dest);
-		return (1);
-	}
-	return (0);
-}
