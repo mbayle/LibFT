@@ -6,13 +6,13 @@
 /*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 16:51:00 by mabayle           #+#    #+#             */
-/*   Updated: 2018/04/16 10:12:35 by mabayle          ###   ########.fr       */
+/*   Updated: 2018/04/16 20:37:13 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	toupper(int c)
+int		ft_toupper(int c)
 {
 	return (c - 32);
 }

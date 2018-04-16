@@ -6,7 +6,7 @@
 /*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 10:11:21 by mabayle           #+#    #+#             */
-/*   Updated: 2018/04/16 10:16:35 by mabayle          ###   ########.fr       */
+/*   Updated: 2018/04/16 18:24:23 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static size_t	count_word(char const *s, char c)
 	return (n);
 }
 
-static char	**alloc_tab(size_t nb_word)
+static char		**alloc_tab(size_t nb_word)
 {
 	char	**to_return;
 
@@ -57,7 +57,7 @@ static char	**alloc_tab(size_t nb_word)
 	return (to_return);
 }
 
-static void	split(char **to_return, char const *s, char c)
+static void		split(char **to_return, char const *s, char c)
 {
 	size_t	itab;
 	char	*word;
@@ -80,7 +80,7 @@ static void	split(char **to_return, char const *s, char c)
 	to_return[itab] = NULL;
 }
 
-char		**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**to_return;
 	size_t	nb_word;

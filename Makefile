@@ -6,7 +6,7 @@
 #    By: mabayle <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/16 09:43:45 by mabayle           #+#    #+#              #
-#    Updated: 2018/04/16 17:49:06 by mabayle          ###   ########.fr        #
+#    Updated: 2018/04/16 20:53:59 by mabayle          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CFLAGS  = -Wall -Werror -Wextra
 FILES   = ft_memset.c \
           ft_bzero.c \
           ft_memcpy.c \
+		  ft_memccpy.c \
           ft_memmove.c \
           ft_memchr.c \
           ft_memcmp.c \
@@ -73,9 +74,8 @@ FILES   = ft_memset.c \
           ft_lstmap.c
 
 OBJ     = $(FILES:.c=.o)
-
-DEL     = rm -f
 INCLUDE = libft.h
+DEL     = rm -f
 
 all:    $(NAME)
 
@@ -89,7 +89,7 @@ $(NAME): $(OBJ)
 	@echo "[=================]"
 
 %.o: %.c $INCLUDE
-	$(CC) $(CFLAGS)
+	$(CC) $(CFLAGS) -c $< -o $@
 clean:
 	@$(DEL) $(OBJ)
 	@echo "[=================]"

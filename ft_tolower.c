@@ -6,13 +6,13 @@
 /*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 17:01:18 by mabayle           #+#    #+#             */
-/*   Updated: 2018/04/16 10:12:26 by mabayle          ###   ########.fr       */
+/*   Updated: 2018/04/16 20:36:57 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	tolower(int c)
+int		ft_tolower(int c)
 {
 	return (c + 32);
 }
