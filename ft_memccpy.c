@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/16 09:55:39 by mabayle           #+#    #+#             */
+/*   Updated: 2018/04/16 10:31:40 by mabayle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include "libft.h"
 
@@ -9,8 +21,8 @@ void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	ptr1 = (char*) s1;
-	ptr2 = (char*) s2;
+	ptr1 = (char*)s1;
+	ptr2 = (char*)s2;
 	i = 0;
 	while (i < n)
 	{

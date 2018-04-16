@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/16 10:11:21 by mabayle           #+#    #+#             */
+/*   Updated: 2018/04/16 10:16:35 by mabayle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
 #include "libft.h"
 
@@ -38,7 +50,7 @@ static char	**alloc_tab(size_t nb_word)
 {
 	char	**to_return;
 
-	to_return = (char**) malloc((nb_word + 1) * sizeof (*to_return));
+	to_return = (char**)malloc((nb_word + 1) * sizeof(*to_return));
 	if (to_return == NULL)
 		return (NULL);
 	to_return[0] = NULL;
@@ -68,7 +80,7 @@ static void	split(char **to_return, char const *s, char c)
 	to_return[itab] = NULL;
 }
 
-char	**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
 	char	**to_return;
 	size_t	nb_word;

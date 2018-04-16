@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/16 10:06:19 by mabayle           #+#    #+#             */
+/*   Updated: 2018/04/16 17:40:39 by mabayle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strdup(const char *src)
@@ -8,7 +21,7 @@ char	*ft_strdup(const char *src)
 
 	if (src == NULL)
 		return (NULL);
-	str = malloc(sizeof (*str) * ft_strlen(src));
+	str = (char *)malloc(sizeof(*str) * ft_strlen(src));
 	i = 0;
 	while (src[i] != '\0')
 	{

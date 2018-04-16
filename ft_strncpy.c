@@ -6,14 +6,14 @@
 /*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 16:20:30 by mabayle           #+#    #+#             */
-/*   Updated: 2018/04/10 16:26:46 by mabayle          ###   ########.fr       */
+/*   Updated: 2018/04/16 17:43:46 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-char	ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
 	unsigned int i;
 

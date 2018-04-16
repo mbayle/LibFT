@@ -1,15 +1,28 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mabayle <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/04/16 09:43:45 by mabayle           #+#    #+#              #
+#    Updated: 2018/04/16 17:49:06 by mabayle          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME    = libft.a
+CC		= gcc
 CFLAGS  = -Wall -Werror -Wextra
 
 FILES   = ft_memset.c \
-          ft_bezero.c \
+          ft_bzero.c \
           ft_memcpy.c \
           ft_memmove.c \
           ft_memchr.c \
           ft_memcmp.c \
           ft_strlen.c \
           ft_strdup.c \
-          ft_.strcpyc \
+          ft_strcpy.c \
           ft_strncpy.c \
           ft_strcat.c \
           ft_strncat.c \
@@ -62,11 +75,11 @@ FILES   = ft_memset.c \
 OBJ     = $(FILES:.c=.o)
 
 DEL     = rm -f
+INCLUDE = libft.h
 
 all:    $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc -c $(CFLAGS) $(FILES)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo "[=================]"
@@ -75,6 +88,8 @@ $(NAME): $(OBJ)
 	@echo "|   was summoned  |"
 	@echo "[=================]"
 
+%.o: %.c $INCLUDE
+	$(CC) $(CFLAGS)
 clean:
 	@$(DEL) $(OBJ)
 	@echo "[=================]"
@@ -93,4 +108,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: all clean fclean re
