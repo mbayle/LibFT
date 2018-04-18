@@ -6,7 +6,7 @@
 /*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 10:08:48 by mabayle           #+#    #+#             */
-/*   Updated: 2018/04/16 17:44:45 by mabayle          ###   ########.fr       */
+/*   Updated: 2018/04/18 15:07:44 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strncat(char *dest, const char *src, size_t nb)
 	char	*p_dest;
 
 	p_dest = dest;
-	if (dest == NULL || src == NULL)
-		return (NULL);
 	while (*p_dest != '\0')
 	{
 		p_dest++;

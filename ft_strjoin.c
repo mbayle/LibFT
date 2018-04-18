@@ -6,7 +6,7 @@
 /*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 10:07:07 by mabayle           #+#    #+#             */
-/*   Updated: 2018/04/16 18:05:18 by mabayle          ###   ########.fr       */
+/*   Updated: 2018/04/18 21:17:10 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
-	return_str = (char *)malloc((len + 1) * sizeof(char));
+	if (!(return_str = (char *)malloc((len + 1) * sizeof(char))))
+		return (NULL);
 	ft_strcpy(return_str, s1);
 	ft_strcat(return_str, s2);
 	return_str[len + 1] = '\0';

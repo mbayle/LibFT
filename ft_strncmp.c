@@ -6,7 +6,7 @@
 /*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 16:36:36 by mabayle           #+#    #+#             */
-/*   Updated: 2018/04/16 20:18:51 by mabayle          ###   ########.fr       */
+/*   Updated: 2018/04/18 20:35:49 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 		j++;
 	}
-	return (s1[j] - s2[j]);
+	return ((unsigned char)s1[j] - (unsigned char)s2[j]);
 }
