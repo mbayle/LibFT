@@ -6,25 +6,30 @@
 /*   By: mabayle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 10:12:15 by mabayle           #+#    #+#             */
-/*   Updated: 2018/04/16 10:17:38 by mabayle          ###   ########.fr       */
+/*   Updated: 2018/04/20 03:38:32 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 char	*ft_strtrim(char const *s)
 {
 	size_t	start;
-	size_t	len;
+	size_t	stop;
 
+	if (!s)
+		return (NULL);
 	start = 0;
-	len = ft_strlen(s) - 1;
-	while ((s[start] == ' ' || s[start] == '\n' || s[start] == '\t'))
+	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
 		start++;
-	if (s[start] == '\0')
-		return (ft_strdup(s + start));
-	while ((s[len] == ' ' || s[len] == '\t' || s[len] == '\n') && len > 0)
-		len--;
-	return (ft_strsub(s, start, len - start + 1));
+	stop = ft_strlen(s);
+	while ((s[stop - 1] == ' ' || s[stop - 1] == '\n' || s[stop - 1] == '\t') &&
+			stop > start)
+		stop--;
+	if (start == 0 && stop == ft_strlen(s))
+		return (ft_strdup(s));
+	else if (start == stop)
+		return (ft_strdup(""));
+	else
+		return (ft_strsub(s, start, stop - start));
 }
