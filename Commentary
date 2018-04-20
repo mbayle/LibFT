@@ -1,0 +1,282 @@
+:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
+|	    																	  ************************																		        |																 |              											           		   ******* COMMENTS ******* 																			 |
+|																			  ************************																				|
+\-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
+
+
+/--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
+|															         **** LIBC FUNCTIONS && FUNCTIONS SUP****																				 |
+\--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
+
+
+
+/---------------------------------------\
+|			*** FT_ATOI ***				|
+\---------------------------------------/
+
+int    ft_atoi(const char *str)
+{
+	int i;
+	int num;
+	int neg;
+
+	i = 0;
+	num = 0;
+	neg = 1;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' || str[i] == '\v'
+			|| str[i] == ' ' || str[i] == '\f')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg = -1;
+		i++;
+	}
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	{
+		num = num * 10 + (str[i] - '0');
+		i++;
+	}
+	return (neg * num);
+}
+
+Descriptif :
+La fonction atoi() convertit le début de la chaîne pointée par nptr en entier de type int. 
+Le résultat est identique à un appel de <  strtol(nptr, (char **)NULL, 10);  > à la différence que atoi() ne détecte pas d'erreur.
+
+Explication :
+- Initialisation des variables (i, num, neg)
+- Parcourir la chaine tant que je rencontre des white spaces
+- Gerer si le nombre est negatif ou positif (change la valeur de neg si valeur negative)
+- Multiplier le chiffre par 10 puis ajouter <  str[1] - '0'  > pour cast la valeur
+
+Retour :
+Le nombre (*1 si positif // *-1 si negatif)
+
+
+
+/----------------------------------------\
+|           *** FT_BZERO ***             |
+\----------------------------------------/
+
+void    ft_bzero(void *s, size_t n)
+{
+	size_t    i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = 0;
+		i++;
+	}
+}
+
+Descriptif :
+La  fonction bzero() met à 0 les n premiers octets du bloc pointé par s.
+
+Explication :
+- Initialisation de i
+- Parcourir la str tant que i est inferieur au nombre passer en parametre
+- Cast <  s  > en char* et lui attribuer la valeur '0'
+
+Retour :
+Pas de retour (fonction void)
+
+
+
+/----------------------------------------\
+|          *** FT_ISALNUM ***            |
+\----------------------------------------/
+
+int ft_isalnum(int c)
+{
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || (c >= 48 && c <= 57))
+		return (1);
+	return (0);
+}
+
+Descriptif :
+Vérifie si  l'on  a  un  caractère  alphanumérique. C'est équivalent à (isalpha(c) || isdigit(c)).
+
+Explication :
+- Condition : <  c  > est un chiffre (0 - 9) ou une lettre (majuscule ou minuscule)
+
+Retour :
+<  1  > si la condition est vrai, <  0  > si elle ne l'est pas
+
+
+
+/----------------------------------------\
+|          *** FT_ISALPHA ***            |
+\----------------------------------------/
+
+int    ft_isalpha(int c)
+{
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	return (0);
+}
+
+Descriptif :
+Vérifie  si  l'on a un caractère alphabétique. Dans la localisation "C" standard,  c'est  équivalent  à (isupper(c) || islower(c)).
+Dans certaines localisations, il peut y avoir des caractères  supplémentaires  pour  lesquels isalpha() est vrai--des lettres qui ne sont ni majuscules ni minuscules.
+
+Explication :
+- Condition : <  c  > est une lettre majuscule ou minuscule
+
+Retour :
+<  1  > si la condition est vrai, <  0  > si elle ne l'est pas
+
+
+
+/----------------------------------------\
+|          *** FT_ISASCII ***            |
+\----------------------------------------/
+
+int    ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
+}
+
+Descriptif :
+Vérifie si c est  un  unsigned  char  sur  7  bits, entrant  dans  le  jeu  de  caractères ASCII. Cette fonction est une extension BSD et SVID.
+
+Explication :
+- Condition : <  c  > est un caractere de la table ascii
+
+Retour :
+<  1  > si la condition est vrai, <  0  > si elle ne l'est pas
+
+
+
+/----------------------------------------\
+|          *** FT_ISDIGIT ***            |
+\----------------------------------------/
+
+int    ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
+}
+
+Descriptif :
+Vérifie s'il s'agit d'un chiffre héxadécimal, c'est à dire 0 1 2 3 4 5 6 7 8 9 a b c
+
+Explication :
+- Condition : <  c  > est un caractere hexadecimal
+
+Retour :
+<  1  > si la condition est vrai, <  0  > si elle ne l'est pas
+
+
+
+/----------------------------------------\
+|          *** FT_ISPRINT ***            |
+\----------------------------------------/
+
+int    ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
+}
+
+Descriptif :
+Vérifie  s'il  s'agit  d'un caractère imprimable, y compris l'espace.
+
+Explication :
+- Condition : <  c  > est un caractere imprimable
+
+Retour :
+<  1  > si la condition est vrai, <  0  > si elle ne l'est pas
+
+
+
+/----------------------------------------\
+|           *** FT_ITOA ***              |
+\----------------------------------------/
+
+static long        ft_digitnb(int n)
+{
+	long        size;
+
+    if (n == 0)
+		return (1);
+    size = 0;
+    if (n < 0)
+    {
+		size++;
+		n = -n;
+    }
+    while (n != 0)
+    {
+		n /= 10;
+		size++;
+	 }
+	 return (size++);
+}
+
+static int			ft_sign(int n)
+{
+	if (n < 0)
+		return (1);
+	return (0);
+}
+
+char				*ft_itoa(int n)
+{
+    long        n_long;
+    long        length;
+    char        *fresh;
+
+    n_long = n;
+    length = ft_digitnb(n_long);
+    fresh = (char *)malloc((length + 1) * sizeof(char));
+    if (!fresh)
+		return (NULL);
+	fresh[length] = '\0';
+	length--;
+	if (n_long < 0)
+		n_long = -n_long;
+	while (length >= 0)
+	{
+		fresh[length] = (n_long % 10) + '0';
+		length--;
+		n_long /= 10;
+	 }
+	 if (ft_sign(n))
+		 fresh[0] = '-';
+	 return (fresh);
+}
+
+Descriptif : 
+Alloue (avec malloc(3)) et retourne une chaine de caractères “fraiche” terminée par un ’\0’ représentant l’entier n passé en paramètre. 
+Les nombres négatifs doivent être gérés. Si l’allocation échoue, la fonction renvoie NULL.
+
+Explication ;
+*************** ft_itoa ***************
+- Declaration des variables : 2 long (permet de gerer plus facilement le int min et max) + variable char * pour stocker la chaine de caracteres retournee
+- Appel a la fonction ft_digitnb pour calculer la taille de la chaine. Sa valeur nous servira pour le malloc
+- Allocation du malloc pour la chaine de characteres (+ gestion de l'echec de l'allocation + ajout du '\0')
+- length-- permet d'eviter de tomber directement sur le '\0' lors de son utilisation dans la boucle
+- Gesion de la valeur negative
+- Boucle qui se decremente. A chaque tour :
+	- Cast de n_long en char et attribution de sa "valeur" a notre chaine de characteres (a l'index correspondant)
+	- Decrementation de la variable n
+	- Changement de la valeur de n_long (permet de decaller d un cran sur la gauche)
+- Condition pour rajouter le signe <  -  > si jamais le nombre est negatif (faisant appel au retour de la fonction ft_sign)
+*************** ft_digitnb ***************
+- Gestion du cas d'une valeur NULL
+- Gestion du cas d'un nombre negatif
+- Calcul de la taille
+*************** ft_sign ***************
+- Si <  n  > est negatif, return 1, sinon return 0
+
+
+
+/----------------------------------------\
+|           *** FT_ITOA ***              |
+\----------------------------------------/
