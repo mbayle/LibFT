@@ -1,0 +1,59 @@
+---
+sudo: true
+language: c
+
+#compiler:
+#  - clang
+#  - gcc
+
+os:
+  - linux
+  - osx
+
+addons:
+  apt:
+    update: true
+    packages:
+      - graphviz
+      - cflow
+      - indent
+
+install:
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        sudo pip install pycflow2dot
+    fi
+
+## https://docs.travis-ci.com/user/multi-os/#Allowing-Failures-on-Jobs-Running-on-One-Operating-System
+#matrix:
+#  allow_failures:
+#    - linux
+
+script:
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      make;
+    fi
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      mkdir public;
+      cat *.c > graph;
+      cat graph;
+      cflow2dot -i graph -f png;
+      cat *.dot;
+      mv *.png public;
+    fi
+
+deploy:
+  provider: pages
+  local-dir: public
+  target-branch: gh-pages
+  skip-cleanup: true
+  github-token: "$GH_TOKEN"
+  keep-history: true
+  on:
+    branch: master
+
+env:
+  global:
+    - secure: "AsWzvY6P4msps22j2EpvGWDlzdKRT8zqjNDU6rV6a40g1DO/42/PK8L6c5p7lUVAi16wPrhZKvZs1KNlw/cgUQjq7OHx9LMVYaplfghsJfltm3ZhtaT/6XQxEKIXiPmKkNxsB+6wfW0E/tSHXQv5zI2R5PHk8KQ/j2ASBGLi/SnTfxg4ttpdKePsB+IxnqHbkXRIDO/JylI7vjssPClKP7Ut2JW1N0lMwXSEaWkUSS8B16uVtw8IOotnmlUwf+kDTkUv54wjeaDX95fLWpnvhsPhUyV8MTI2YYg0ZEtN5K/jjomY0t7KvGPx+32ns4FVs7F9SGq191wDzZo9qz+Pyf1429/z53cFWUiP40NAXoYOllbIEfIcnBG3m4KVXzQ/YvKwFk0/t9UOVtdZdUZuY+QOzoQJ7YP5WKQK2me2pqQVzwAb45/7kH6tM7zDC39yofpm7X08G7DNIHkor0Pg1uWNTzA+H9iqvSNk7PKWGIDepW8S2uXb8dXdZ0ssu+zrDY2wDKQVO//ByM4EKTAa8utpoQ9xRyheg+yg8BLgpybq9W+VGHPXg8stv1dzPr6GMCk3xJHDrVENAqcBR4TNRt+jVqhcUxSdwJYLYmNI5xlQLcefN3kLYKvLqeUubDjN2INw6cz1o4b1QAQWM1lx8m4mwscYPBdVa5t8ys4NXjo="
