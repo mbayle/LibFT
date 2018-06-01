@@ -36,6 +36,7 @@ script:
     fi
   - |
     if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      export TRAVIS_TAG=1;
       mkdir public;
       cat *.c > graph;
       cat graph;
@@ -53,6 +54,7 @@ deploy:
   keep-history: true
   on:
     branch: master
+    tags: true
 
 env:
   global:
